@@ -1,0 +1,94 @@
+package com.example.currencyconverter.ui.exchange
+
+import android.util.Log
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.currencyconverter.domain.entity.Account
+import com.example.currencyconverter.domain.entity.Currency
+import com.example.currencyconverter.domain.entity.Transaction
+import com.example.currencyconverter.domain.repository.AccountRepository
+import com.example.currencyconverter.domain.repository.RatesRepository
+import com.example.currencyconverter.domain.repository.TransactionRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import java.time.LocalDateTime
+import javax.inject.Inject
+
+@HiltViewModel
+class ExchangeViewModel @Inject constructor(
+    private val ratesRepository: RatesRepository,
+    private val accountRepository: AccountRepository,
+    private val transactionRepository: TransactionRepository,
+    savedStateHandle: SavedStateHandle
+) : ViewModel() {
+
+    private val _state = MutableStateFlow(ExchangeState())
+    val state: StateFlow<ExchangeState> = _state
+
+    init {
+        val fromCurrency = Currency.valueOf(savedStateHandle.get<String>("fromCurrency") ?: "USD")
+        val toCurrency = Currency.valueOf(savedStateHandle.get<String>("toCurrency") ?: "EUR")
+        val amount = savedStateHandle.get<Double>("amount") ?: 1.0
+        loadExchangeData(fromCurrency, toCurrency, amount)
+    }
+
+    private fun loadExchangeData(fromCurrency: Currency, toCurrency: Currency, amount: Double){
+        viewModelScope.launch {
+            try {
+                val rates = ratesRepository.getRates(fromCurrency.name, amount)
+                val toRate = rates.find { it.currency == toCurrency }?.value ?: 0.0
+                _state.value = ExchangeState(
+                    fromCurrency = fromCurrency,
+                    toCurrency = toCurrency,
+                    fromAmount = amount,
+                    toAmount = toRate,
+                    exchangeRate = toRate / amount
+                )
+            } catch (e: Exception){
+                Log.d("ExchangeViewModel", "$e")
+            }
+        }
+    }
+
+    fun performExchange() {
+        viewModelScope.launch {
+            val state = _state.value
+
+            val accounts = accountRepository.getAccounts()
+            val fromAccount = accounts.find { it.currency == state.fromCurrency }
+            val toAccount = accounts.find { it.currency == state.toCurrency }
+
+            if (fromAccount != null && fromAccount.amount >= state.toAmount) {
+                val updatedAccounts = mutableListOf<Account>()
+                if (true) {
+                    updatedAccounts.add(
+                        fromAccount.copy(amount = fromAccount.amount - state.toAmount)
+                    )
+                }
+                if (toAccount != null){
+                    updatedAccounts.add(
+                        toAccount.copy(amount = toAccount.amount + state.toAmount)
+                    )
+                } else {
+                    updatedAccounts.add(
+                        Account(currency = state.toCurrency, amount = state.fromAmount)
+                    )
+                }
+                accountRepository.insertAccounts(*updatedAccounts.toTypedArray())
+
+                val transaction = Transaction(
+                    id = 0,
+                    fromCurrency = state.toCurrency,
+                    toCurrency = state.fromCurrency,
+                    fromAmount = state.toAmount,
+                    toAmount = state.fromAmount,
+                    dateTime = LocalDateTime.now()
+                )
+                transactionRepository.insertTransactions(transaction)
+            }
+        }
+    }
+}
