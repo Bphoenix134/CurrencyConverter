@@ -29,10 +29,18 @@ class ExchangeViewModel @Inject constructor(
     val state: StateFlow<ExchangeState> = _state
 
     init {
-        val fromCurrency = Currency.valueOf(savedStateHandle.get<String>("fromCurrency") ?: "USD")
-        val toCurrency = Currency.valueOf(savedStateHandle.get<String>("toCurrency") ?: "EUR")
-        val amount = savedStateHandle.get<Double>("amount") ?: 1.0
-        loadExchangeData(fromCurrency, toCurrency, amount)
+        val fromCurrencyStr = savedStateHandle.get<String>("fromCurrency") ?: "USD"
+        val toCurrencyStr = savedStateHandle.get<String>("toCurrency") ?: "EUR"
+        val amount = savedStateHandle.get<Float>("amount")?.toDouble() ?: 1.0
+
+        try {
+            val fromCurrency = Currency.valueOf(fromCurrencyStr)
+            val toCurrency = Currency.valueOf(toCurrencyStr)
+            loadExchangeData(fromCurrency, toCurrency, amount)
+        } catch (e: IllegalArgumentException) {
+            Log.e("ExchangeViewModel", "Invalid currency: from=$fromCurrencyStr, to=$toCurrencyStr", e)
+            loadExchangeData(Currency.USD, Currency.EUR, amount)
+        }
     }
 
     private fun loadExchangeData(fromCurrency: Currency, toCurrency: Currency, amount: Double){
@@ -48,7 +56,14 @@ class ExchangeViewModel @Inject constructor(
                     exchangeRate = toRate / amount
                 )
             } catch (e: Exception){
-                Log.d("ExchangeViewModel", "$e")
+                Log.e("ExchangeViewModel", "Failed to load exchange data", e)
+                _state.value = ExchangeState(
+                    fromCurrency = fromCurrency,
+                    toCurrency = toCurrency,
+                    fromAmount = amount,
+                    toAmount = 0.0,
+                    exchangeRate = 0.0
+                )
             }
         }
     }
@@ -88,6 +103,8 @@ class ExchangeViewModel @Inject constructor(
                     dateTime = LocalDateTime.now()
                 )
                 transactionRepository.insertTransactions(transaction)
+            } else {
+                Log.w("ExchangeViewModel", "Insufficient funds or account not found")
             }
         }
     }
