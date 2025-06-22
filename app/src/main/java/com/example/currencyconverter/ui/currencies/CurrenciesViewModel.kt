@@ -78,7 +78,6 @@ class CurrenciesViewModel @Inject constructor(
     private fun updateFilteredRates() {
         val rates = _state.value.rates
         val accounts = _state.value.accounts
-        val inputAmount = _state.value.inputAmount
         val selectedCurrency = _state.value.selectedCurrency
 
         val filteredRates = if (_state.value.isAmountInputMode) {

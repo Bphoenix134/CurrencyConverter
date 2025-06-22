@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -18,7 +19,7 @@ import com.example.currencyconverter.R
 import com.example.currencyconverter.domain.entity.Currency
 import com.example.currencyconverter.domain.entity.Rate
 import com.example.currencyconverter.ui.theme.CurrencyConverterTheme
-import java.util.Locale
+import com.example.currencyconverter.utils.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -108,49 +109,66 @@ fun CurrencyItem(
     onUpdateAmount: (Double) -> Unit,
     onResetAmount: () -> Unit
 ) {
-    Row(
+    val fullName = getCurrencyFullName(rate.currency)
+    val formattedAmount = formatCurrency(rate.currency, amount)
+    val formattedBalance = balance?.let { "Balance: ${formatCurrency(rate.currency, it)}" }
+
+    Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() }
-            .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically
+            .padding(horizontal = 12.dp, vertical = 6.dp)
+            .clickable { onClick() },
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        shape = RoundedCornerShape(12.dp)
     ) {
-        Image(
-            painter = painterResource(id = getFlagResource(rate.currency)),
-            contentDescription = "Flag",
-            modifier = Modifier.size(24.dp)
-        )
-        Spacer(modifier = Modifier.width(8.dp))
-        Column {
-            Text(text = rate.currency.name)
-            Text(text = "${rate.currency}: ${String.format(Locale.US, "%.2f", amount)}")
-            balance?.let {
-                Text(text = "Баланс: ${String.format(Locale.US, "%.2f", it)}")
-            }
-        }
-        Spacer(modifier = Modifier.weight(1f))
-        if (isAmountInputMode) {
-            var amountText by remember { mutableStateOf(amount.toString()) }
-            OutlinedTextField(
-                value = amountText,
-                onValueChange = { text ->
-                    amountText = text
-                    text.toDoubleOrNull()?.let { onUpdateAmount(it) }
-                },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                modifier = Modifier.width(100.dp)
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                painter = painterResource(id = getFlagResource(rate.currency)),
+                contentDescription = "Flag",
+                modifier = Modifier.size(40.dp)
             )
-            IconButton(onClick = onResetAmount) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_clear),
-                    contentDescription = "Reset"
+            Spacer(modifier = Modifier.width(12.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(text = rate.currency.name, style = MaterialTheme.typography.titleMedium)
+                Text(text = fullName, style = MaterialTheme.typography.bodySmall)
+                if (formattedBalance != null) {
+                    Text(text = formattedBalance, style = MaterialTheme.typography.bodySmall)
+                }
+            }
+            Spacer(modifier = Modifier.width(12.dp))
+
+            if (isAmountInputMode) {
+                var amountText by remember { mutableStateOf(amount.toString()) }
+                Column(horizontalAlignment = Alignment.End) {
+                    OutlinedTextField(
+                        value = amountText,
+                        onValueChange = { text ->
+                            amountText = text
+                            text.toDoubleOrNull()?.let { onUpdateAmount(it) }
+                        },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                        singleLine = true,
+                        modifier = Modifier.width(120.dp)
+                    )
+                    IconButton(onClick = onResetAmount) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_clear),
+                            contentDescription = "Reset"
+                        )
+                    }
+                }
+            } else {
+                Text(
+                    text = formattedAmount,
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.clickable { if (isSelected) onToggleAmountInputMode() }
                 )
             }
-        } else if (isSelected) {
-            Text(
-                text = "1",
-                modifier = Modifier.clickable { onToggleAmountInputMode() }
-            )
         }
     }
 }
@@ -159,8 +177,38 @@ fun CurrencyItem(
 fun getFlagResource(currency: Currency): Int {
     return when (currency) {
         Currency.USD -> R.drawable.flag_us
-        Currency.RUB -> R.drawable.flag_ru
         Currency.EUR -> R.drawable.flag_eu
+        Currency.GBP -> R.drawable.flag_gb
+        Currency.AUD -> R.drawable.flag_au
+        Currency.BGN -> R.drawable.flag_bg
+        Currency.BRL -> R.drawable.flag_br
+        Currency.CAD -> R.drawable.flag_ca
+        Currency.CHF -> R.drawable.flag_ch
+        Currency.CNY -> R.drawable.flag_cn
+        Currency.CZK -> R.drawable.flag_cz
+        Currency.DKK -> R.drawable.flag_dk
+        Currency.HKD -> R.drawable.flag_hk
+        Currency.HRK -> R.drawable.flag_hr
+        Currency.HUF -> R.drawable.flag_hu
+        Currency.IDR -> R.drawable.flag_id
+        Currency.ILS -> R.drawable.flag_il
+        Currency.INR -> R.drawable.flag_in
+        Currency.ISK -> R.drawable.flag_is
+        Currency.JPY -> R.drawable.flag_jp
+        Currency.KRW -> R.drawable.flag_kr
+        Currency.MXN -> R.drawable.flag_br
+        Currency.MYR -> R.drawable.flag_my
+        Currency.NOK -> R.drawable.flag_no
+        Currency.NZD -> R.drawable.flag_nz
+        Currency.PHP -> R.drawable.flag_ph
+        Currency.PLN -> R.drawable.flag_pl
+        Currency.RON -> R.drawable.flag_ro
+        Currency.RUB -> R.drawable.flag_ru
+        Currency.SEK -> R.drawable.flag_se
+        Currency.SGD -> R.drawable.flag_sg
+        Currency.THB -> R.drawable.flag_th
+        Currency.TRY -> R.drawable.flag_tr
+        Currency.ZAR -> R.drawable.flag_za
         else -> R.drawable.flag_default
     }
 }
