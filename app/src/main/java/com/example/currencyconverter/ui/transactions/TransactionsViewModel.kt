@@ -23,8 +23,8 @@ class TransactionsViewModel @Inject constructor(
 
     private fun loadTransactions() {
         viewModelScope.launch {
-            val transaction = transactionsRepository.getTransactions()
-            _state.value = TransactionsState(transaction = transaction)
+            val transactions = transactionsRepository.getTransactions()
+            _state.value = TransactionsState(transactions = transactions)
         }
     }
 }
