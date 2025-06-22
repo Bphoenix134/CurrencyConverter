@@ -43,19 +43,20 @@ class ExchangeViewModel @Inject constructor(
         }
     }
 
-    private fun loadExchangeData(fromCurrency: Currency, toCurrency: Currency, amount: Double){
+    private fun loadExchangeData(fromCurrency: Currency, toCurrency: Currency, amount: Double) {
         viewModelScope.launch {
             try {
                 val rates = ratesRepository.getRates(fromCurrency.name, amount)
                 val toRate = rates.find { it.currency == toCurrency }?.value ?: 0.0
+                val exchangeRate = if (amount > 0) toRate / amount else 0.0
                 _state.value = ExchangeState(
                     fromCurrency = fromCurrency,
                     toCurrency = toCurrency,
                     fromAmount = amount,
                     toAmount = toRate,
-                    exchangeRate = toRate / amount
+                    exchangeRate = exchangeRate
                 )
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 Log.e("ExchangeViewModel", "Failed to load exchange data", e)
                 _state.value = ExchangeState(
                     fromCurrency = fromCurrency,
@@ -71,35 +72,32 @@ class ExchangeViewModel @Inject constructor(
     fun performExchange() {
         viewModelScope.launch {
             val state = _state.value
-
             val accounts = accountRepository.getAccounts()
             val fromAccount = accounts.find { it.currency == state.fromCurrency }
             val toAccount = accounts.find { it.currency == state.toCurrency }
 
-            if (fromAccount != null && fromAccount.amount >= state.toAmount) {
+            if (fromAccount != null && fromAccount.amount >= state.fromAmount) {
                 val updatedAccounts = mutableListOf<Account>()
-                if (true) {
-                    updatedAccounts.add(
-                        fromAccount.copy(amount = fromAccount.amount - state.toAmount)
-                    )
-                }
-                if (toAccount != null){
+                updatedAccounts.add(
+                    fromAccount.copy(amount = fromAccount.amount - state.fromAmount)
+                )
+                if (toAccount != null) {
                     updatedAccounts.add(
                         toAccount.copy(amount = toAccount.amount + state.toAmount)
                     )
                 } else {
                     updatedAccounts.add(
-                        Account(currency = state.toCurrency, amount = state.fromAmount)
+                        Account(currency = state.toCurrency, amount = state.toAmount)
                     )
                 }
                 accountRepository.insertAccounts(*updatedAccounts.toTypedArray())
 
                 val transaction = Transaction(
                     id = 0,
-                    fromCurrency = state.toCurrency,
-                    toCurrency = state.fromCurrency,
-                    fromAmount = state.toAmount,
-                    toAmount = state.fromAmount,
+                    fromCurrency = state.fromCurrency,
+                    toCurrency = state.toCurrency,
+                    fromAmount = state.fromAmount,
+                    toAmount = state.toAmount,
                     dateTime = LocalDateTime.now()
                 )
                 transactionRepository.insertTransactions(transaction)
