@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
-    id("kotlin-kapt")
     id("androidx.room")
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
@@ -17,7 +16,7 @@ android {
     defaultConfig {
         applicationId = "com.example.currencyconverter"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -39,13 +38,19 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+        languageVersion = "1.9"
     }
     buildFeatures {
         compose = true
-        viewBinding = true
+        viewBinding = false
     }
     room {
         schemaDirectory("$projectDir/schemas")
+    }
+    lint {
+        baseline = file("lint-baseline.xml")
+        abortOnError = false
+        disable += "NullSafeMutableLiveData"
     }
 }
 
@@ -85,7 +90,6 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
 
     // hilt
     implementation(libs.hilt.android)

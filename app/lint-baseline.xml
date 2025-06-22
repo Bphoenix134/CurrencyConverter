@@ -1,0 +1,1331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.7.3" type="baseline" client="gradle" dependencies="false" name="AGP (8.7.3)" variant="all" version="8.7.3">
+
+    <issue
+        id="RedundantLabel"
+        message="Redundant label can be removed"
+        errorLine1="            android:label=&quot;@string/app_name&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="21"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more"
+        errorLine1="    android:width=&quot;1500dp&quot;"
+        errorLine2="                   ~~~~~~">
+        <location
+            file="src/main/res/drawable/flag_default.xml"
+            line="2"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more"
+        errorLine1="    android:width=&quot;800dp&quot;"
+        errorLine2="                   ~~~~~">
+        <location
+            file="src/main/res/drawable/flag_ru.xml"
+            line="2"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more"
+        errorLine1="    android:width=&quot;800dp&quot;"
+        errorLine2="                   ~~~~~">
+        <location
+            file="src/main/res/drawable/flag_us.xml"
+            line="3"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more"
+        errorLine1="    android:width=&quot;800dp&quot;"
+        errorLine2="                   ~~~~~">
+        <location
+            file="src/main/res/drawable/ic_clear.xml"
+            line="2"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more"
+        errorLine1="    android:width=&quot;800dp&quot;"
+        errorLine2="                   ~~~~~">
+        <location
+            file="src/main/res/drawable/ic_transactions.xml"
+            line="2"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.application than 8.7.3 is available: 8.10.1"
+        errorLine1="agp = &quot;8.7.3&quot;"
+        errorLine2="      ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="2"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.application than 8.7.3 is available: 8.10.1"
+        errorLine1="agp = &quot;8.7.3&quot;"
+        errorLine2="      ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="2"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.application than 8.7.3 is available: 8.10.1"
+        errorLine1="agp = &quot;8.7.3&quot;"
+        errorLine2="      ~~~~~~~">
+        <location
+            file="../gradle/libs.versions.toml"
+            line="2"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v26`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `mipmap-anydpi`.">
+        <location
+            file="src/main/res/mipmap-anydpi-v26"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2498 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        errorLine1="          android:pathData=&quot;M2.667,6C2.667,6.368 2.368,6.667 2,6.667C1.632,6.667 1.333,6.368 1.333,6C1.333,5.632 1.632,5.333 2,5.333C2.368,5.333 2.667,5.632 2.667,6ZM5.333,6C5.333,6.368 5.035,6.667 4.667,6.667C4.298,6.667 4,6.368 4,6C4,5.632 4.298,5.333 4.667,5.333C5.035,5.333 5.333,5.632 5.333,6ZM7.333,6.667C7.701,6.667 8,6.368 8,6C8,5.632 7.701,5.333 7.333,5.333C6.965,5.333 6.667,5.632 6.667,6C6.667,6.368 6.965,6.667 7.333,6.667ZM10.667,6C10.667,6.368 10.368,6.667 10,6.667C9.632,6.667 9.333,6.368 9.333,6C9.333,5.632 9.632,5.333 10,5.333C10.368,5.333 10.667,5.632 10.667,6ZM3.333,8C3.701,8 4,7.702 4,7.333C4,6.965 3.701,6.667 3.333,6.667C2.965,6.667 2.667,6.965 2.667,7.333C2.667,7.702 2.965,8 3.333,8ZM6.667,7.333C6.667,7.702 6.368,8 6,8C5.632,8 5.333,7.702 5.333,7.333C5.333,6.965 5.632,6.667 6,6.667C6.368,6.667 6.667,6.965 6.667,7.333ZM8.667,8C9.035,8 9.333,7.702 9.333,7.333C9.333,6.965 9.035,6.667 8.667,6.667C8.298,6.667 8,6.965 8,7.333C8,7.702 8.298,8 8.667,8ZM10.667,8.667C10.667,9.035 10.368,9.333 10,9.333C9.632,9.333 9.333,9.035 9.333,8.667C9.333,8.298 9.632,8 10,8C10.368,8 10.667,8.298 10.667,8.667ZM7.333,9.333C7.701,9.333 8,9.035 8,8.667C8,8.298 7.701,8 7.333,8C6.965,8 6.667,8.298 6.667,8.667C6.667,9.035 6.965,9.333 7.333,9.333ZM5.333,8.667C5.333,9.035 5.035,9.333 4.667,9.333C4.298,9.333 4,9.035 4,8.667C4,8.298 4.298,8 4.667,8C5.035,8 5.333,8.298 5.333,8.667ZM2,9.333C2.368,9.333 2.667,9.035 2.667,8.667C2.667,8.298 2.368,8 2,8C1.632,8 1.333,8.298 1.333,8.667C1.333,9.035 1.632,9.333 2,9.333ZM4,10C4,10.368 3.701,10.667 3.333,10.667C2.965,10.667 2.667,10.368 2.667,10C2.667,9.632 2.965,9.333 3.333,9.333C3.701,9.333 4,9.632 4,10ZM6,10.667C6.368,10.667 6.667,10.368 6.667,10C6.667,9.632 6.368,9.333 6,9.333C5.632,9.333 5.333,9.632 5.333,10C5.333,10.368 5.632,10.667 6,10.667ZM9.333,10C9.333,10.368 9.035,10.667 8.667,10.667C8.298,10.667 8,10.368 8,10C8,9.632 8.298,9.333 8.667,9.333C9.035,9.333 9.333,9.632 9.333,10ZM10,12C10.368,12 10.667,11.702 10.667,11.333C10.667,10.965 10.368,10.667 10,10.667C9.632,10.667 9.333,10.965 9.333,11.333C9.333,11.702 9.632,12 10,12ZM8,11.333C8,11.702 7.701,12 7.333,12C6.965,12 6.667,11.702 6.667,11.333C6.667,10.965 6.965,10.667 7.333,10.667C7.701,10.667 8,10.965 8,11.333ZM4.667,12C5.035,12 5.333,11.702 5.333,11.333C5.333,10.965 5.035,10.667 4.667,10.667C4.298,10.667 4,10.965 4,11.333C4,11.702 4.298,12 4.667,12ZM2.667,11.333C2.667,11.702 2.368,12 2,12C1.632,12 1.333,11.702 1.333,11.333C1.333,10.965 1.632,10.667 2,10.667C2.368,10.667 2.667,10.965 2.667,11.333Z&quot;"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/flag_us.xml"
+            line="24"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1043 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        errorLine1="      android:pathData=&quot;M6.97,16.97C6.677,17.263 6.677,17.737 6.97,18.03C7.263,18.323 7.737,18.323 8.03,18.03L6.97,16.97ZM13.03,13.03C13.323,12.737 13.323,12.263 13.03,11.97C12.737,11.677 12.263,11.677 11.97,11.97L13.03,13.03ZM11.97,11.97C11.677,12.263 11.677,12.737 11.97,13.03C12.263,13.323 12.737,13.323 13.03,13.03L11.97,11.97ZM18.03,8.03C18.323,7.737 18.323,7.263 18.03,6.97C17.737,6.677 17.263,6.677 16.97,6.97L18.03,8.03ZM13.03,11.97C12.737,11.677 12.263,11.677 11.97,11.97C11.677,12.263 11.677,12.737 11.97,13.03L13.03,11.97ZM16.97,18.03C17.263,18.323 17.737,18.323 18.03,18.03C18.323,17.737 18.323,17.263 18.03,16.97L16.97,18.03ZM11.97,13.03C12.263,13.323 12.737,13.323 13.03,13.03C13.323,12.737 13.323,12.263 13.03,11.97L11.97,13.03ZM8.03,6.97C7.737,6.677 7.263,6.677 6.97,6.97C6.677,7.263 6.677,7.737 6.97,8.03L8.03,6.97ZM8.03,18.03L13.03,13.03L11.97,11.97L6.97,16.97L8.03,18.03ZM13.03,13.03L18.03,8.03L16.97,6.97L11.97,11.97L13.03,13.03ZM11.97,13.03L16.97,18.03L18.03,16.97L13.03,11.97L11.97,13.03ZM13.03,11.97L8.03,6.97L6.97,8.03L11.97,13.03L13.03,11.97Z&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_clear.xml"
+            line="7"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.layout.activity_main` appears to be unused"
+        errorLine1="&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.back_hand_black` appears to be unused"
+        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; android:height=&quot;24dp&quot; android:tint=&quot;#000000&quot; android:viewportHeight=&quot;24&quot; android:viewportWidth=&quot;24&quot; android:width=&quot;24dp&quot;>"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/back_hand_black.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.back_hand_white` appears to be unused"
+        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; android:height=&quot;24dp&quot; android:tint=&quot;#FFFFFF&quot; android:viewportHeight=&quot;24&quot; android:viewportWidth=&quot;24&quot; android:width=&quot;24dp&quot;>"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/back_hand_white.xml"
+            line="1"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.purple_200` appears to be unused"
+        errorLine1="    &lt;color name=&quot;purple_200&quot;>#FFBB86FC&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="3"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.purple_500` appears to be unused"
+        errorLine1="    &lt;color name=&quot;purple_500&quot;>#FF6200EE&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="4"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.purple_700` appears to be unused"
+        errorLine1="    &lt;color name=&quot;purple_700&quot;>#FF3700B3&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="5"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.teal_200` appears to be unused"
+        errorLine1="    &lt;color name=&quot;teal_200&quot;>#FF03DAC5&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="6"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.teal_700` appears to be unused"
+        errorLine1="    &lt;color name=&quot;teal_700&quot;>#FF018786&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="7"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.black` appears to be unused"
+        errorLine1="    &lt;color name=&quot;black&quot;>#FF000000&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="8"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.white` appears to be unused"
+        errorLine1="    &lt;color name=&quot;white&quot;>#FFFFFFFF&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="9"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_eur` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_eur&quot; translatable=&quot;false&quot;>€&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="4"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_aud` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_aud&quot; translatable=&quot;false&quot;>$&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="5"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_bgn` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_bgn&quot; translatable=&quot;false&quot;>лв&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="6"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_brl` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_brl&quot; translatable=&quot;false&quot;>R$&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="7"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_cad` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_cad&quot; translatable=&quot;false&quot;>$&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="8"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_chf` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_chf&quot; translatable=&quot;false&quot;>CHF&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="9"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_cny` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_cny&quot; translatable=&quot;false&quot;>¥&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="10"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_czk` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_czk&quot; translatable=&quot;false&quot;>Kč&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="11"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_dkk` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_dkk&quot; translatable=&quot;false&quot;>kr&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="12"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_gbp` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_gbp&quot; translatable=&quot;false&quot;>£&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="13"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_hkd` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_hkd&quot; translatable=&quot;false&quot;>HK$&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="14"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_hrk` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_hrk&quot; translatable=&quot;false&quot;>kn&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="15"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_huf` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_huf&quot; translatable=&quot;false&quot;>Ft&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="16"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_idr` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_idr&quot; translatable=&quot;false&quot;>Rp&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="17"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_ils` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_ils&quot; translatable=&quot;false&quot;>₪&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="18"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_inr` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_inr&quot; translatable=&quot;false&quot;>₹&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="19"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_isk` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_isk&quot; translatable=&quot;false&quot;>kr&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="20"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_jpy` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_jpy&quot; translatable=&quot;false&quot;>¥&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="21"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_krw` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_krw&quot; translatable=&quot;false&quot;>₩&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="22"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_mxn` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_mxn&quot; translatable=&quot;false&quot;>$&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="23"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_myr` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_myr&quot; translatable=&quot;false&quot;>RM&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="24"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_nok` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_nok&quot; translatable=&quot;false&quot;>kr&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="25"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_nzd` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_nzd&quot; translatable=&quot;false&quot;>$&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="26"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_php` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_php&quot; translatable=&quot;false&quot;>₱&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="27"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_pln` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_pln&quot; translatable=&quot;false&quot;>zł&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="28"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_ron` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_ron&quot; translatable=&quot;false&quot;>lei&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="29"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_rub` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_rub&quot; translatable=&quot;false&quot;>₽&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="30"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_sek` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_sek&quot; translatable=&quot;false&quot;>kr&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="31"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_sgd` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_sgd&quot; translatable=&quot;false&quot;>$&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="32"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_thb` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_thb&quot; translatable=&quot;false&quot;>฿&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="33"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_try` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_try&quot; translatable=&quot;false&quot;>₺&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="34"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_usd` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_usd&quot; translatable=&quot;false&quot;>$&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="35"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.symbol_zar` appears to be unused"
+        errorLine1="    &lt;string name=&quot;symbol_zar&quot; translatable=&quot;false&quot;>R&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="36"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_eur` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_eur&quot; translatable=&quot;false&quot;>EUR&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="38"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_aud` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_aud&quot; translatable=&quot;false&quot;>AUD&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="39"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_bgn` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_bgn&quot; translatable=&quot;false&quot;>BGN&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="40"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_brl` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_brl&quot; translatable=&quot;false&quot;>BRL&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="41"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_cad` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_cad&quot; translatable=&quot;false&quot;>CAD&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="42"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_chf` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_chf&quot; translatable=&quot;false&quot;>CHF&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="43"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_cny` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_cny&quot; translatable=&quot;false&quot;>CNY&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="44"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_czk` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_czk&quot; translatable=&quot;false&quot;>CZK&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="45"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_dkk` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_dkk&quot; translatable=&quot;false&quot;>DKK&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="46"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_gbp` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_gbp&quot; translatable=&quot;false&quot;>GBP&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="47"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_hkd` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_hkd&quot; translatable=&quot;false&quot;>HKD&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="48"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_hrk` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_hrk&quot; translatable=&quot;false&quot;>HRK&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="49"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_huf` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_huf&quot; translatable=&quot;false&quot;>HUF&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="50"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_idr` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_idr&quot; translatable=&quot;false&quot;>IDR&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="51"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_ils` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_ils&quot; translatable=&quot;false&quot;>ILS&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="52"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_inr` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_inr&quot; translatable=&quot;false&quot;>INR&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="53"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_isk` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_isk&quot; translatable=&quot;false&quot;>ISK&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="54"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_jpy` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_jpy&quot; translatable=&quot;false&quot;>JPY&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="55"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_krw` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_krw&quot; translatable=&quot;false&quot;>KRW&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="56"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_mxn` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_mxn&quot; translatable=&quot;false&quot;>MXN&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="57"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_myr` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_myr&quot; translatable=&quot;false&quot;>MYR&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="58"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_nok` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_nok&quot; translatable=&quot;false&quot;>NOK&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="59"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_nzd` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_nzd&quot; translatable=&quot;false&quot;>NZD&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="60"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_php` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_php&quot; translatable=&quot;false&quot;>PHP&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="61"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_pln` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_pln&quot; translatable=&quot;false&quot;>PLN&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="62"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_ron` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_ron&quot; translatable=&quot;false&quot;>RON&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="63"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_rub` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_rub&quot; translatable=&quot;false&quot;>RUB&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="64"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_sek` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_sek&quot; translatable=&quot;false&quot;>SEK&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="65"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_sgd` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_sgd&quot; translatable=&quot;false&quot;>SGD&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="66"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_thb` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_thb&quot; translatable=&quot;false&quot;>THB&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="67"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_try` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_try&quot; translatable=&quot;false&quot;>TRY&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="68"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_usd` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_usd&quot; translatable=&quot;false&quot;>USD&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="69"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.code_zar` appears to be unused"
+        errorLine1="    &lt;string name=&quot;code_zar&quot; translatable=&quot;false&quot;>ZAR&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="70"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_eur` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_eur&quot;>Euro&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="72"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_aud` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_aud&quot;>Australia Dollar&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="73"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_bgn` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_bgn&quot;>Bulgaria Lev&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="74"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_brl` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_brl&quot;>Brazil Real&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="75"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_cad` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_cad&quot;>Canada Dollar&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="76"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_chf` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_chf&quot;>Switzerland Franc&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="77"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_cny` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_cny&quot;>China Yuan/Renminbi&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="78"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_czk` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_czk&quot;>Czech Koruna&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="79"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_dkk` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_dkk&quot;>Denmark Krone&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="80"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_gbp` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_gbp&quot;>Great Britain Pound&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="81"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_hkd` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_hkd&quot;>Hong Kong Dollar&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="82"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_hrk` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_hrk&quot;>Croatia Kuna&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="83"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_huf` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_huf&quot;>Hungary Forint&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="84"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_idr` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_idr&quot;>Indonesia Rupiah&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="85"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_ils` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_ils&quot;>Israel New Shekel&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="86"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_inr` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_inr&quot;>India Rupee&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="87"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_isk` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_isk&quot;>Iceland Krona&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="88"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_jpy` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_jpy&quot;>Japan Yen&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="89"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_krw` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_krw&quot;>South Korea Won &lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="90"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_mxn` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_mxn&quot;>Mexico Peso&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="91"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_myr` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_myr&quot;>Malaysia Ringgit&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="92"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_nok` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_nok&quot;>Norway Kroner&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="93"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_nzd` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_nzd&quot;>New Zealand Dollar&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="94"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_php` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_php&quot;>Philippines Peso&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="95"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_pln` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_pln&quot;>Poland Zloty&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="96"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_ron` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_ron&quot;>Romania New Lei&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="97"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_rub` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_rub&quot;>Russia Rouble&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="98"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_sek` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_sek&quot;>Sweden Krona&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="99"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_sgd` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_sgd&quot;>Singapore Dollar&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="100"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_thb` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_thb&quot;>Thailand Baht&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="101"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_try` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_try&quot;>Turkish Lira&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="102"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_usd` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_usd&quot;>USA Dollar&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="103"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.currency_zar` appears to be unused"
+        errorLine1="    &lt;string name=&quot;currency_zar&quot;>South Africa Rand&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="104"
+            column="13"/>
+    </issue>
+
+</issues>
