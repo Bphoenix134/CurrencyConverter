@@ -37,6 +37,7 @@ class ExchangeViewModel @Inject constructor(
             val fromCurrency = Currency.valueOf(fromCurrencyStr)
             val toCurrency = Currency.valueOf(toCurrencyStr)
             loadExchangeData(fromCurrency, toCurrency, amount)
+            loadAccounts()
         } catch (e: IllegalArgumentException) {
             Log.e("ExchangeViewModel", "Invalid currency: from=$fromCurrencyStr, to=$toCurrencyStr", e)
             loadExchangeData(Currency.USD, Currency.EUR, amount)
@@ -69,10 +70,17 @@ class ExchangeViewModel @Inject constructor(
         }
     }
 
+    private fun loadAccounts() {
+        viewModelScope.launch {
+            val accounts = accountRepository.getAccounts()
+            _state.value = _state.value.copy(accounts = accounts)
+        }
+    }
+
     fun performExchange() {
         viewModelScope.launch {
             val state = _state.value
-            val accounts = accountRepository.getAccounts()
+            val accounts = state.accounts
             val fromAccount = accounts.find { it.currency == state.fromCurrency }
             val toAccount = accounts.find { it.currency == state.toCurrency }
 
