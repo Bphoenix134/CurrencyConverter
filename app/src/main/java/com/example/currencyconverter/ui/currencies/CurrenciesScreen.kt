@@ -38,7 +38,8 @@ fun CurrenciesScreen(
                         IconButton(onClick = onNavigateToTransactions) {
                             Icon(
                                 painter = painterResource(R.drawable.ic_transactions),
-                                contentDescription = "Транзакции"
+                                contentDescription = "Транзакции",
+                                modifier = Modifier.size(20.dp)
                             )
                         }
                     }
@@ -144,11 +145,11 @@ fun CurrencyItem(
 
             if (isAmountInputMode) {
                 var amountText by remember { mutableStateOf(amount.toString()) }
-                Column(horizontalAlignment = Alignment.End) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
                     OutlinedTextField(
                         value = amountText,
                         onValueChange = { text ->
-                            amountText = text
+                            amountText = text.replace("[^\\d.]".toRegex(), "")
                             text.toDoubleOrNull()?.let { onUpdateAmount(it) }
                         },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
