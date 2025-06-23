@@ -28,6 +28,9 @@ class ExchangeViewModel @Inject constructor(
     private val _state = MutableStateFlow(ExchangeState())
     val state: StateFlow<ExchangeState> = _state
 
+    private val _exchangeCompleted = MutableStateFlow(false)
+    val exchangeCompleted: StateFlow<Boolean> = _exchangeCompleted
+
     init {
         val toCurrencyStr = savedStateHandle.get<String>("toCurrency") ?: "USD"
         val fromCurrencyStr = savedStateHandle.get<String>("fromCurrency") ?: "EUR"
@@ -36,73 +39,67 @@ class ExchangeViewModel @Inject constructor(
         try {
             val toCurrency = Currency.valueOf(toCurrencyStr)
             val fromCurrency = Currency.valueOf(fromCurrencyStr)
-            loadExchangeData(fromCurrency, toCurrency, amount)
-            loadAccounts()
+            loadEverything(fromCurrency, toCurrency, amount)
         } catch (e: IllegalArgumentException) {
             Log.e("ExchangeViewModel", "Invalid currency: to=$toCurrencyStr, from=$fromCurrencyStr", e)
-            loadExchangeData(Currency.EUR, Currency.USD, amount)
         }
     }
 
-    private fun loadExchangeData(fromCurrency: Currency, toCurrency: Currency, amount: Double) {
-        viewModelScope.launch {
-            try {
-                val rates = ratesRepository.getRates(fromCurrency.name, 1.0)
-                val toRate = rates.find { it.currency == toCurrency }?.value ?: 0.0
-                val fromAmount = amount / toRate
-                _state.value = ExchangeState(
-                    fromCurrency = fromCurrency,
-                    toCurrency = toCurrency,
-                    fromAmount = fromAmount,
-                    toAmount = amount,
-                    exchangeRate = toRate
-                )
-            } catch (e: Exception) {
-                Log.e("ExchangeViewModel", "Failed to load exchange data", e)
-                _state.value = ExchangeState(
-                    fromCurrency = fromCurrency,
-                    toCurrency = toCurrency,
-                    fromAmount = amount,
-                    toAmount = 0.0,
-                    exchangeRate = 0.0
-                )
-            }
-        }
-    }
-
-    private fun loadAccounts() {
+    private fun loadEverything(fromCurrency: Currency, toCurrency: Currency, amount: Double) {
         viewModelScope.launch {
             val accounts = accountRepository.getAccounts()
-            _state.value = _state.value.copy(accounts = accounts)
+
+            val rates = ratesRepository.getRates(fromCurrency.name, 1.0)
+            val toRate = rates.find { it.currency == toCurrency }?.value ?: 0.0
+            val fromAmount = amount / toRate
+
+            _state.value = ExchangeState(
+                fromCurrency = fromCurrency,
+                toCurrency = toCurrency,
+                fromAmount = fromAmount,
+                toAmount = amount,
+                exchangeRate = toRate,
+                accounts = accounts
+            )
         }
     }
 
     fun performExchange() {
         viewModelScope.launch {
-            val state = _state.value
-            val accounts = state.accounts
-            val fromAccount = accounts.find { it.currency == state.fromCurrency }
-            val toAccount = accounts.find { it.currency == state.toCurrency }
+            val currentState = _state.value
 
-            if (fromAccount != null && fromAccount.amount >= state.fromAmount) {
+            if (currentState.accounts.isEmpty()) {
+                Log.w("ExchangeViewModel", "Accounts not loaded yet")
+                return@launch
+            }
+
+            val fromAccount = currentState.accounts.find { it.currency == currentState.fromCurrency }
+            val toAccount = currentState.accounts.find { it.currency == currentState.toCurrency }
+
+            if (fromAccount != null && fromAccount.amount >= currentState.fromAmount) {
                 val updatedAccounts = mutableListOf<Account>()
-                updatedAccounts.add(fromAccount.copy(amount = fromAccount.amount - state.fromAmount))
+                updatedAccounts.add(fromAccount.copy(amount = fromAccount.amount - currentState.fromAmount))
                 if (toAccount != null) {
-                    updatedAccounts.add(toAccount.copy(amount = toAccount.amount + state.toAmount))
+                    updatedAccounts.add(toAccount.copy(amount = toAccount.amount + currentState.toAmount))
                 } else {
-                    updatedAccounts.add(Account(currency = state.toCurrency, amount = state.toAmount))
+                    updatedAccounts.add(Account(currency = currentState.toCurrency, amount = currentState.toAmount))
                 }
+
                 accountRepository.insertAccounts(*updatedAccounts.toTypedArray())
 
                 val transaction = Transaction(
                     id = 0,
-                    fromCurrency = state.fromCurrency,
-                    toCurrency = state.toCurrency,
-                    fromAmount = state.fromAmount,
-                    toAmount = state.toAmount,
+                    fromCurrency = currentState.fromCurrency,
+                    toCurrency = currentState.toCurrency,
+                    fromAmount = currentState.fromAmount,
+                    toAmount = currentState.toAmount,
                     dateTime = LocalDateTime.now()
                 )
                 transactionRepository.insertTransactions(transaction)
+
+                _exchangeCompleted.value = true
+
+                Log.d("ExchangeViewModel", "Transaction saved")
             } else {
                 Log.w("ExchangeViewModel", "Insufficient funds or account not found")
             }

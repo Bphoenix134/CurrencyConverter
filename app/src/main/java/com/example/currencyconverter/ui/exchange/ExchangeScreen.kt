@@ -26,6 +26,14 @@ fun ExchangeScreen(
         val viewModel = hiltViewModel<ExchangeViewModel>()
         val state by viewModel.state.collectAsState()
 
+        val exchangeCompleted by viewModel.exchangeCompleted.collectAsState()
+
+        LaunchedEffect(exchangeCompleted) {
+            if (exchangeCompleted) {
+                onNavigateBack()
+            }
+        }
+
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -116,7 +124,6 @@ fun ExchangeScreen(
                 Button(
                     onClick = {
                         viewModel.performExchange()
-                        onNavigateBack()
                     },
                     modifier = Modifier.fillMaxWidth()
                 ) {
