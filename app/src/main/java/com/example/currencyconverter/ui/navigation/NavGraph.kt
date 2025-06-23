@@ -16,19 +16,19 @@ fun NavGraph() {
     NavHost(navController = navController, startDestination = Destinations.Currencies.route) {
         composable(Destinations.Currencies.route) {
             CurrenciesScreen(
-                onNavigateToExchange = { fromCurrency, toCurrency, amount ->
+                onNavigateToExchange = { toCurrency, fromCurrency, amount ->
                     navController.navigate(
-                        "${Destinations.Exchange.route}/$fromCurrency/$toCurrency/$amount"
+                        "${Destinations.Exchange.route}/$toCurrency/$fromCurrency/$amount"
                     )
                 },
                 onNavigateToTransactions = { navController.navigate(Destinations.Transactions.route) }
             )
         }
         composable(
-            route = "${Destinations.Exchange.route}/{fromCurrency}/{toCurrency}/{amount}",
+            route = "${Destinations.Exchange.route}/{toCurrency}/{fromCurrency}/{amount}",
             arguments = listOf(
-                navArgument("fromCurrency") { type = NavType.StringType },
                 navArgument("toCurrency") { type = NavType.StringType },
+                navArgument("fromCurrency") { type = NavType.StringType },
                 navArgument("amount") { type = NavType.FloatType }
             )
         ) {

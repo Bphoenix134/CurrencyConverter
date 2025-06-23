@@ -50,36 +50,6 @@ fun ExchangeScreen(
                 )
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Image(
-                        painter = painterResource(id = getFlagResource(state.fromCurrency)),
-                        contentDescription = "${state.fromCurrency.name} flag",
-                        modifier = Modifier.size(40.dp)
-                    )
-                    Column(
-                        modifier = Modifier
-                            .weight(1f)
-                            .padding(start = 12.dp)
-                    ) {
-                        Text(state.fromCurrency.name, style = MaterialTheme.typography.titleMedium)
-                        Text(getCurrencyFullName(state.fromCurrency), style = MaterialTheme.typography.bodySmall)
-                        val fromBalance = state.accounts.find { it.currency == state.fromCurrency }?.amount
-                        if (fromBalance != null) {
-                            Text("Balance: ${formatCurrency(state.fromCurrency, fromBalance)}", style = MaterialTheme.typography.bodySmall)
-                        }
-                    }
-                    Column(
-                        horizontalAlignment = Alignment.End,
-                        modifier = Modifier.padding(start = 12.dp)
-                    ) {
-                        Text("-${String.format(Locale.US, "%.2f", state.fromAmount)}", style = MaterialTheme.typography.titleMedium)
-                    }
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
 
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -112,7 +82,37 @@ fun ExchangeScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Кнопка
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Image(
+                        painter = painterResource(id = getFlagResource(state.fromCurrency)),
+                        contentDescription = "${state.fromCurrency.name} flag",
+                        modifier = Modifier.size(40.dp)
+                    )
+                    Column(
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(start = 12.dp)
+                    ) {
+                        Text(state.fromCurrency.name, style = MaterialTheme.typography.titleMedium)
+                        Text(getCurrencyFullName(state.fromCurrency), style = MaterialTheme.typography.bodySmall)
+                        val fromBalance = state.accounts.find { it.currency == state.fromCurrency }?.amount
+                        if (fromBalance != null) {
+                            Text("Balance: ${formatCurrency(state.fromCurrency, fromBalance)}", style = MaterialTheme.typography.bodySmall)
+                        }
+                    }
+                    Column(
+                        horizontalAlignment = Alignment.End,
+                        modifier = Modifier.padding(start = 12.dp)
+                    ) {
+                        Text("-${String.format(Locale.US, "%.2f", state.fromAmount)}", style = MaterialTheme.typography.titleMedium)
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
                 Button(
                     onClick = {
                         viewModel.performExchange()

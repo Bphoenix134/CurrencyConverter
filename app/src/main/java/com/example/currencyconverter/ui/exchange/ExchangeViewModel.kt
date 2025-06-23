@@ -29,33 +29,33 @@ class ExchangeViewModel @Inject constructor(
     val state: StateFlow<ExchangeState> = _state
 
     init {
-        val fromCurrencyStr = savedStateHandle.get<String>("fromCurrency") ?: "USD"
-        val toCurrencyStr = savedStateHandle.get<String>("toCurrency") ?: "EUR"
+        val toCurrencyStr = savedStateHandle.get<String>("toCurrency") ?: "USD"
+        val fromCurrencyStr = savedStateHandle.get<String>("fromCurrency") ?: "EUR"
         val amount = savedStateHandle.get<Float>("amount")?.toDouble() ?: 1.0
 
         try {
-            val fromCurrency = Currency.valueOf(fromCurrencyStr)
             val toCurrency = Currency.valueOf(toCurrencyStr)
+            val fromCurrency = Currency.valueOf(fromCurrencyStr)
             loadExchangeData(fromCurrency, toCurrency, amount)
             loadAccounts()
         } catch (e: IllegalArgumentException) {
-            Log.e("ExchangeViewModel", "Invalid currency: from=$fromCurrencyStr, to=$toCurrencyStr", e)
-            loadExchangeData(Currency.USD, Currency.EUR, amount)
+            Log.e("ExchangeViewModel", "Invalid currency: to=$toCurrencyStr, from=$fromCurrencyStr", e)
+            loadExchangeData(Currency.EUR, Currency.USD, amount)
         }
     }
 
     private fun loadExchangeData(fromCurrency: Currency, toCurrency: Currency, amount: Double) {
         viewModelScope.launch {
             try {
-                val rates = ratesRepository.getRates(fromCurrency.name, amount)
+                val rates = ratesRepository.getRates(fromCurrency.name, 1.0)
                 val toRate = rates.find { it.currency == toCurrency }?.value ?: 0.0
-                val exchangeRate = if (amount > 0) toRate / amount else 0.0
+                val fromAmount = amount / toRate
                 _state.value = ExchangeState(
                     fromCurrency = fromCurrency,
                     toCurrency = toCurrency,
-                    fromAmount = amount,
-                    toAmount = toRate,
-                    exchangeRate = exchangeRate
+                    fromAmount = fromAmount,
+                    toAmount = amount,
+                    exchangeRate = toRate
                 )
             } catch (e: Exception) {
                 Log.e("ExchangeViewModel", "Failed to load exchange data", e)
@@ -86,17 +86,11 @@ class ExchangeViewModel @Inject constructor(
 
             if (fromAccount != null && fromAccount.amount >= state.fromAmount) {
                 val updatedAccounts = mutableListOf<Account>()
-                updatedAccounts.add(
-                    fromAccount.copy(amount = fromAccount.amount - state.fromAmount)
-                )
+                updatedAccounts.add(fromAccount.copy(amount = fromAccount.amount - state.fromAmount))
                 if (toAccount != null) {
-                    updatedAccounts.add(
-                        toAccount.copy(amount = toAccount.amount + state.toAmount)
-                    )
+                    updatedAccounts.add(toAccount.copy(amount = toAccount.amount + state.toAmount))
                 } else {
-                    updatedAccounts.add(
-                        Account(currency = state.toCurrency, amount = state.toAmount)
-                    )
+                    updatedAccounts.add(Account(currency = state.toCurrency, amount = state.toAmount))
                 }
                 accountRepository.insertAccounts(*updatedAccounts.toTypedArray())
 
