@@ -68,7 +68,7 @@ class CurrenciesViewModel @Inject constructor(
                     _state.value = _state.value.copy(rates = rates)
                     updateFilteredRates()
                 } catch (e: Exception) {
-                    Log.d("CurrenciesViewModel", "$e")
+//                    Log.d("CurrenciesViewModel", "$e")
                 }
                 delay(1000)
             }
@@ -95,11 +95,32 @@ class CurrenciesViewModel @Inject constructor(
         _state.value = _state.value.copy(filteredRates = filteredRates)
     }
 
+    suspend fun loadRatesOnce() {
+        val amount = if (_state.value.isAmountInputMode) _state.value.inputAmount else 1.0
+        val rates = ratesRepository.getRates(
+            baseCurrency = _state.value.selectedCurrency.name,
+            amount = amount
+        )
+        _state.value = _state.value.copy(rates = rates)
+        updateFilteredRates()
+    }
+
     fun selectCurrency(currency: Currency) {
         if (!_state.value.isAmountInputMode) {
             _state.value = _state.value.copy(selectedCurrency = currency)
+            viewModelScope.launch {
+                loadRatesOnce()
+            }
             startRatesUpdate()
         }
+    }
+
+    fun updateInputAmount(amount: Double) {
+        _state.value = _state.value.copy(inputAmount = amount)
+        viewModelScope.launch {
+            loadRatesOnce()
+        }
+        startRatesUpdate()
     }
 
     fun toggleAmountInputMode() {
@@ -107,11 +128,6 @@ class CurrenciesViewModel @Inject constructor(
             isAmountInputMode = !_state.value.isAmountInputMode,
             inputAmount = 1.0
         )
-        startRatesUpdate()
-    }
-
-    fun updateInputAmount(amount: Double) {
-        _state.value = _state.value.copy(inputAmount = amount)
         startRatesUpdate()
     }
 
